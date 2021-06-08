@@ -1,4 +1,5 @@
 <script>
+  import Theme from "./theme.svelte";
   import {
     MDBNavbar,
     MDBNavbarBrand,
@@ -7,6 +8,7 @@
     MDBNavLink,
     MDBNavbarToggler,
     MDBCollapse,
+    MDBIcon,
   } from "mdbsvelte";
 
   let isOpen = false;
@@ -37,5 +39,24 @@
         <MDBNavLink to="#!">Home</MDBNavLink>
       </MDBNavItem>
     </MDBNavbarNav>
+    <MDBNavbarNav right>
+      <MDBNavItem>
+        <MDBNavLink class="waves-effect waves-light" to="#!">
+          <Theme>Toggle</Theme>
+        </MDBNavLink>
+      </MDBNavItem>
+    </MDBNavbarNav>
   </MDBCollapse>
 </MDBNavbar>
+
+<style>
+  :global(body) {
+    background-color: #f2eee2;
+    color: #0084f6;
+    transition: background-color 0.3s;
+  }
+  :global(body.dark-mode) {
+    background-color: #1d3040;
+    color: #bfc2c7;
+  }
+</style>

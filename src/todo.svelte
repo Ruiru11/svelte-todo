@@ -7,7 +7,7 @@
   let data = [];
 
   onMount(async () => {
-      console.log("hiii")
+    console.log("hiii");
     const res = await fetch(`https://api.quotable.io/random`);
     data = await res.json();
 
@@ -37,11 +37,9 @@
 
 <MDBListGroupItem color="light">
   <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1">
-      List group item heading <MDBBtn
-        size="sm"
-        color="elegant"
-        on:click={toggleView}>Aqua</MDBBtn
+    <h5 class="mb-1" style="font-size: x-large; font-weight: bold;">
+      Todo item <MDBBtn size="sm" color="elegant" on:click={toggleView}
+        >View</MDBBtn
       >
     </h5>
     <small>3 days ago</small>
@@ -53,6 +51,8 @@
       <button class="btn">+1</button>
       <button class="btn btn-dark">-1</button>
     </p>
-    <h6 style="color:green;font-style: italic;font-size: small;" >{`"${data.content}"`}</h6>
+    <h6 style="color:green;font-style: italic;font-size: small;">
+      {`"${data.content}"`}
+    </h6>
   {/if}
 </MDBListGroupItem>
