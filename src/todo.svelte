@@ -10,21 +10,11 @@
     console.log("hiii");
     const res = await fetch(`https://api.quotable.io/random`);
     data = await res.json();
-
-    console.log("dad", data);
   });
 
-  export let name;
-  export let points;
+  export let todoContent;
+  export let todoItem
   let showItem = false;
-
-  const addPoint = () => {
-    points += 1;
-  };
-
-  const reducePoint = () => {
-    points -= 1;
-  };
 
   const toggleView = () => {
     showItem = !showItem;
@@ -37,8 +27,8 @@
 
 <MDBListGroupItem color="light">
   <div class="d-flex w-100 justify-content-between">
-    <h5 class="mb-1" style="font-size: x-large; font-weight: bold;">
-      Todo item <MDBBtn size="sm" color="elegant" on:click={toggleView}
+    <h5 class="mb-1" style="font-size: large; font-weight: bold;">
+      {todoItem} <MDBBtn size="sm" color="elegant" on:click={toggleView}
         >View</MDBBtn
       >
     </h5>
@@ -46,8 +36,7 @@
   </div>
   {#if showItem}
     <p class="mb-1">
-      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
-      risus varius blandit.
+     {todoContent}
       <button class="btn">+1</button>
       <button class="btn btn-dark">-1</button>
     </p>
