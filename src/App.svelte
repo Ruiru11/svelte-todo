@@ -1,9 +1,23 @@
 <script>
   import { MDBContainer, MDBRow, MDBCol } from "mdbsvelte";
+  import { onMount } from "svelte";
 
   import Navbar from "./navbar.svelte";
   import Todo from "./todo.svelte";
   import About from "./about.svelte";
+
+  let Todos = [];
+
+  onMount(async () => {
+    console.log("hiii");
+    const res = await fetch(
+      `http://jsonplaceholder.typicode.com/posts?_todo=1&_limit=5`
+    );
+	console.log("get ", await res);
+    Todos = await res.json();
+
+    console.log("get ", Todos);
+  });
 
   let players = [
     {
@@ -36,14 +50,11 @@
 <Navbar />
 <MDBContainer>
   <About on:addplayer={addplayer} />
-  {#if players.length === 0}
+  {#if Todos.length === 0}
     <p>No players</p>
   {:else}
-    {#each players as player}
-      <Todo
-        points={player.points}
-        on:removePlayer={removePlayer}
-      />
+    {#each Todos as todo}
+      <Todo todoItem={todo.title} todoContent={todo.body} on:removePlayer={removePlayer} />
     {/each}
   {/if}
   <Todo />
