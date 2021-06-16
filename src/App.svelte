@@ -11,7 +11,7 @@
   onMount(async () => {
     console.log("hiii");
     const res = await fetch(
-      `http://jsonplaceholder.typicode.com/posts?_todo=1&_limit=5`
+      `https://jsonplaceholder.typicode.com/posts?_todo=1&_limit=5`
     );
 	console.log("get ", await res);
     Todos = await res.json();
