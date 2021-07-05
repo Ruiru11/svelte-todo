@@ -5,7 +5,8 @@
   const dispatch = createEventDispatcher();
 
   let data = [];
-  let modal = false
+  let modal = false;
+  let name = "";
 
   onMount(async () => {
     console.log("hiii");
@@ -16,6 +17,10 @@
   export let todoContent;
   export let todoItem
   let showItem = false;
+
+  const onchange = (event) => {
+    console.log("ecenf",event.target.value)
+  }
 
   const toggleView = () => {
     showItem = !showItem;
@@ -31,6 +36,7 @@
 </script>
 
 <MDBListGroupItem color="light">
+  <input value={name} on:input={onchange}>
   <div class="d-flex w-100 justify-content-between">
     <MDBBtn color="primary" on:click={()=>toggle()}>Medium modal</MDBBtn>
   <MDBModal isOpen={modal} toggle={()=>toggle()}>
