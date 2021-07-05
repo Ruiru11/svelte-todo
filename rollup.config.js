@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+const path = require("path")
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -70,6 +71,13 @@ export default {
 		// instead of npm run dev), minify
 		production && terser()
 	],
+	resolve: {
+		alias: {
+		  svelte: path.resolve("node_modules", "svelte")
+		},
+		extensions: [".mjs", ".js", ".svelte"],
+		mainFields: ["svelte", "browser", "module", "main"]
+	  },
 	watch: {
 		clearScreen: false
 	}
